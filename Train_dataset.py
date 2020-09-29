@@ -48,7 +48,7 @@ X[:,0:1] = X_sc.fit_transform(X[:,0:1])
 X[:,3:4] = X_sc.fit_transform(X[:,3:4])
 
 
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, train_size=0.35, random_state=0)
+X_train, , Y_train = (X, Y, train_size=0.35, random_state=0)
 
 
 #Build_model
