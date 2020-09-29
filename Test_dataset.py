@@ -40,19 +40,18 @@ df=df.dropna()
 sc = StandardScaler()
 test_x = sc.fit_transform(df)
 
-from sklearn.model_selection import train_test_split
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.35, random_state=0)
+X_test, Y_test = (X, Y, test_size=0.35, random_state=0)
 print(X_test.shape)
 
 print(df.dtypes)
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
-y = le.fit_transform(Y)
+y = le.transform(Y)
 print(y)
 
 X_sc = StandardScaler()
-X[:,0:1] = X_sc.fit_transform(X[:,0:1])
-X[:,3:4] = X_sc.fit_transform(X[:,3:4])
+X[:,0:1] = X_sc.transform(X[:,0:1])
+X[:,3:4] = X_sc.transform(X[:,3:4])
 
 #Test_model
 from sklearn.linear_model import LinearRegression
@@ -65,7 +64,7 @@ model.predict(X_test)
 model.score(X_test, Y_test)
 
 
-#Build_another_Model
+
 from sklearn.svm import SVC
 model_svm = SVC(kernel = "rbf", gamma = 1.5)
 model_svm.fit(X_test, Y_test)
